@@ -1,0 +1,1 @@
+javac Test.java Symbol.java TrieNode.java && java Test.java Symbol.java TrieNode.java ../../root/text_input.txt
