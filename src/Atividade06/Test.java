@@ -56,7 +56,7 @@ public class Test {
         CodeTable encoding = new CodeTable();
         encoding.fill(tries.list.get(0));
         
-        System.out.println("Right One: " + encoding.mapping);
+        
         
         //Part 4: write encrypted string
 	}

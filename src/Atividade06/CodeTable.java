@@ -2,15 +2,15 @@ package Atividade06;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class CodeTable {
 	
-	public Map<Character,BinaryNumber> mapping;
-	//Criar Stack e depois fazer mapping
+	public Map<Character, ArrayList<Boolean>> mapping;
 	
 	public CodeTable() {
-		mapping = new HashMap<Character,BinaryNumber>();
+		mapping = new HashMap<Character, ArrayList<Boolean>>();
 	}
 
 	public void fill(Trie tree) { //Preenche a tabela de códigos com dados da Trie.
@@ -20,18 +20,17 @@ public class CodeTable {
 	
 	private void fill(TrieNode node, BinaryNumber currentBinary) {	
 		if(node.isLeaf()) {
-			mapping.put(node.value, currentBinary);
-			System.out.println(currentBinary);
-			return;
+			mapping.put(node.value, currentBinary.getValue());
+			System.out.print(mapping+"\n");
+		}else {
+			currentBinary.addDigit(false);
+			fill(node.left, currentBinary);
+			currentBinary.removeDigit();
+			
+			currentBinary.addDigit(true);
+			fill(node.right, currentBinary);
+			currentBinary.removeDigit();
 		}
-		
-		currentBinary.addDigit(false);
-		fill(node.left, currentBinary);
-		currentBinary.removeDigit();
-		
-		currentBinary.addDigit(true);
-		fill(node.right, currentBinary);
-		currentBinary.removeDigit();
 	}
 
 	public String toString() {

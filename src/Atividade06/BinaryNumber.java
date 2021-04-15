@@ -22,12 +22,20 @@ public class BinaryNumber {
 		return value.size();
 	}
 	
-	public ArrayList<Boolean> getValue(){
-		return value;
-	}
-	
 	public void setValue(ArrayList<Boolean> newValue){
 		value = newValue;
+	}
+	
+	public ArrayList<Boolean> getValue() {
+		ArrayList<Boolean> list = new ArrayList<Boolean>();
+        for(int i=0; i<value.size(); i++) {
+        	if(value.get(i)) {
+        		list.add(value.get(i));
+        	} else {
+        		list.add(value.get(i));
+        	}
+        }
+		return list;		
 	}
 	
 	public String toString() {
