@@ -18,7 +18,6 @@ public class Test {
             
             while((i=fin.read())!=-1){
             	verificador = true;
-            	System.out.print((char)i);
             	text += (char)i;
              
             	for(int j=0; j<symbols.size(); j++) {
@@ -36,11 +35,9 @@ public class Test {
             fin.close();
             
         }catch(Exception e){System.out.println(e);}
+        System.out.println("Text: " + text);
         
         //Part 2: Trie
-        System.out.println();
-        System.out.println("================================================");
-        
         TrieSet tries = new TrieSet();
         for(int i=0; i<symbols.size(); i++) { //Criar root tries
         	tries.list.add(new Trie(new TrieNode(symbols.get(i).value, symbols.get(i).quantity)));
@@ -55,7 +52,7 @@ public class Test {
         
         //Part 4: write encrypted string
 		BinaryNumber encrypted_sequence = encoding.getEncryptedSequence(text);
-        System.out.println("Encrypted Message: " + encrypted_sequence);
+        System.out.println("Encrypted Message: " + encrypted_sequence.toString());
         
         //Part 5: Decode
         String decrypted_string = encoding.getDecryptedMessage(encrypted_sequence);

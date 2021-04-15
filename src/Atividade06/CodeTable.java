@@ -48,13 +48,13 @@ public class CodeTable {
         String decrypted_string = new String();
         
         for(int i=0; i<encrypted_sequence.getSize(); i++) {
+        	current.addDigit(encrypted_sequence.get(i));
         	if(mappingBC.get(current.getValue()) != null) {
         		decrypted_string += mappingBC.get(current.getValue());
         		current.erase();
         	}
-        	
-        	current.addDigit(encrypted_sequence.get(i));
         }      
+
         return decrypted_string;
 	}
 	
