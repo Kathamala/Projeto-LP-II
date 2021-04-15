@@ -2,8 +2,8 @@ package Atividade06;
 
 public class Symbol {
 	
-	char value;
-	int quantity;
+	public char value;
+	public int quantity;
 	
 	public Symbol(char value) {
 		this.value = value;

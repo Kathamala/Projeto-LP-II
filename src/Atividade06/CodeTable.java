@@ -21,6 +21,9 @@ public class CodeTable {
 	
 	private void fill(TrieNode node, BinaryNumber currentBinary) {	
 		if(node.isLeaf()) {
+			if(currentBinary.getSize() == 0) {
+				currentBinary.addDigit(false);
+			}
 			mappingCB.put(node.value, currentBinary.getValue());
 			mappingBC.put(currentBinary.getValue(), node.value);
 		}else {

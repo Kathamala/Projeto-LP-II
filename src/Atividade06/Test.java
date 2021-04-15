@@ -13,7 +13,7 @@ public class Test {
 		boolean verificador = true;
 		
         try{    
-            FileInputStream fin=new FileInputStream("root/text_input.txt");   //args[0] 
+            FileInputStream fin=new FileInputStream(args[0]);   //args[0] 
             int i=0;    
             
             while((i=fin.read())!=-1){
@@ -35,6 +35,11 @@ public class Test {
             fin.close();
             
         }catch(Exception e){System.out.println(e);}
+        if(text.length() == 0) {
+        	System.out.println("Digite um texto válido");
+        	return;
+        }
+        
         System.out.println("Text: " + text);
         
         //Part 2: Trie
@@ -48,7 +53,7 @@ public class Test {
         
         //Part 3: Hash Mapping
         CodeTable encoding = new CodeTable();
-        encoding.fill(tries.list.get(0));
+        encoding.fill(tries.list.peek());
         
         //Part 4: write encrypted string
 		BinaryNumber encrypted_sequence = encoding.getEncryptedSequence(text);

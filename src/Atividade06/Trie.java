@@ -1,6 +1,6 @@
 package Atividade06;
 
-public class Trie {
+public class Trie implements Comparable<Trie>{
 	
 	TrieNode root;
 	
@@ -20,5 +20,10 @@ public class Trie {
 		str += String.format("%s(%s)[freq: %d][level: %d]\n", tabs, current.value, current.quantity, level);
 		str += toString(current.left, tabs + "\t", level + 1);
 		return str;
+	}
+
+	@Override
+	public int compareTo(Trie o) {
+		return this.root.quantity - o.root.quantity;
 	}
 }

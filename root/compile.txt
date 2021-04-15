@@ -1,1 +1,1 @@
-javac Test.java Symbol.java TrieNode.java && java Test.java Symbol.java TrieNode.java ../../root/text_input.txt
+javac Atividade06/*.java && java Atividade06/Test ../root/text_input.txt
