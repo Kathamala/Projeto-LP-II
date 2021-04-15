@@ -50,35 +50,16 @@ public class Test {
         System.out.println(tries.toString());
         
         //Part 3: Hash Mapping
-        
         CodeTable encoding = new CodeTable();
         encoding.fill(tries.list.get(0));
-        System.out.println();
         
         //Part 4: write encrypted string
-        System.out.print("Encrypted Message: ");
-        BinaryNumber encrypted_sequence = new BinaryNumber();
-        for(int i=0; i<text.length(); i++) {
-        	encrypted_sequence.addSequence(encoding.get(text.charAt(i)));
-        }
-        System.out.println(encrypted_sequence);
+		BinaryNumber encrypted_sequence = encoding.getEncryptedSequence(text);
+        System.out.println("Encrypted Message: " + encrypted_sequence);
         
         //Part 5: Decode
-
-        System.out.print("Decrypted Message: ");
-        
-        String decrypted_string = new String();
-        BinaryNumber current = new BinaryNumber();
-        
-        for(int i=0; i<encrypted_sequence.getSize(); i++) {
-        	if(encoding.mappingBC.get(current.getValue()) != null) {
-        		decrypted_string += encoding.get(current.getValue());
-        		current.erase();
-        	}
-        	
-        	current.addDigit(encrypted_sequence.get(i));
-        }      
-        System.out.println(decrypted_string);
+        String decrypted_string = encoding.getDecryptedMessage(encrypted_sequence);
+        System.out.println("Decrypted Message: " + decrypted_string);
 	}
 }
 

@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class CodeTable {
 	
-	public Map<Character, ArrayList<Boolean>> mappingCB;
-	public Map<ArrayList<Boolean>, Character> mappingBC;
+	private Map<Character, ArrayList<Boolean>> mappingCB;
+	private Map<ArrayList<Boolean>, Character> mappingBC;
 	
 	public CodeTable() {
 		mappingCB = new HashMap<Character, ArrayList<Boolean>>();
@@ -34,14 +34,30 @@ public class CodeTable {
 		}
 	}
 	
-	public ArrayList<Boolean> get(char key) {
-		return mappingCB.get(key);
+	public BinaryNumber getEncryptedSequence(String text) {
+        BinaryNumber encrypted_sequence = new BinaryNumber();
+        for(int i=0; i<text.length(); i++) {
+        	encrypted_sequence.addSequence(mappingCB.get(text.charAt(i)));
+        }
+        
+        return encrypted_sequence;
 	}
-
-	public char get(ArrayList<Boolean> key) {
-		return mappingBC.get(key);
+	
+	public String getDecryptedMessage(BinaryNumber encrypted_sequence) {
+        BinaryNumber current = new BinaryNumber();
+        String decrypted_string = new String();
+        
+        for(int i=0; i<encrypted_sequence.getSize(); i++) {
+        	if(mappingBC.get(current.getValue()) != null) {
+        		decrypted_string += mappingBC.get(current.getValue());
+        		current.erase();
+        	}
+        	
+        	current.addDigit(encrypted_sequence.get(i));
+        }      
+        return decrypted_string;
 	}
-
+	
 	public String toString() {
 		return mappingCB.toString();
 	}

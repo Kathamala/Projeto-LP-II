@@ -14,8 +14,7 @@ public class TrieSet {
         while(list.size() > 1) {
         	sort();
         	TrieNode parent = new TrieNode(' ', list.get(0).root.quantity+list.get(1).root.quantity);
-        	parent.left = list.get(0).root;
-        	parent.right = list.get(1).root;
+        	parent.setChilds(list.get(0).root, list.get(1).root);
         	
         	list.get(0).root = parent;
         	list.remove(1);
