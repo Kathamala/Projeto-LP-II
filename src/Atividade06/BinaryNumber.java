@@ -14,8 +14,22 @@ public class BinaryNumber {
 		value.add(bool);
 	}
 	
+	public void addSequence(ArrayList<Boolean> bool) {
+		for(int i=0; i<bool.size(); i++) {
+			value.add(bool.get(i));
+		}
+	}
+	
 	public void removeDigit() {
 		value.remove(getSize()-1);
+	}
+	
+	public void erase() {
+		value.clear();
+	}
+	
+	public boolean get(int index) {
+		return value.get(index);
 	}
 	
 	public int getSize() {
