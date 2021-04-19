@@ -4,16 +4,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Test {
+public class Huffman {
 	
 	public static void main(String [] args) throws IOException {
 		//Part 1: Read File
-		ArrayList<Symbol> symbols = new ArrayList<Symbol>();
+		ArrayList<TrieNode> symbols = new ArrayList<TrieNode>();
 		String text = new String();
 		boolean verificador = true;
 		
         try{    
-            FileInputStream fin=new FileInputStream(args[0]);   //args[0] 
+            FileInputStream fin=new FileInputStream(args[0]);   //args[0]
             int i=0;    
             
             while((i=fin.read())!=-1){
@@ -28,7 +28,7 @@ public class Test {
             		}
             	}
             	if(verificador) {
-            		symbols.add(new Symbol((char)i));  
+            		symbols.add(new TrieNode((char)i, 1));  
             	}        
             }
             
@@ -45,7 +45,7 @@ public class Test {
         //Part 2: Trie
         TrieSet tries = new TrieSet();
         for(int i=0; i<symbols.size(); i++) { //Criar root tries
-        	tries.list.add(new Trie(new TrieNode(symbols.get(i).value, symbols.get(i).quantity)));
+        	tries.list.add(new Trie(symbols.get(i)));
         }
         
         tries.compact();
@@ -54,6 +54,7 @@ public class Test {
         //Part 3: Hash Mapping
         CodeTable encoding = new CodeTable();
         encoding.fill(tries.list.peek());
+        System.out.println(encoding + "\n");
         
         //Part 4: write encrypted string
 		BinaryNumber encrypted_sequence = encoding.getEncryptedSequence(text);

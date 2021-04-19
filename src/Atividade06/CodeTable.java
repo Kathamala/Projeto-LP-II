@@ -52,7 +52,7 @@ public class CodeTable {
         
         for(int i=0; i<encrypted_sequence.getSize(); i++) {
         	current.addDigit(encrypted_sequence.get(i));
-        	if(mappingBC.get(current.getValue()) != null) {
+        	if(mappingBC.containsKey(current.getValue())) {
         		decrypted_string += mappingBC.get(current.getValue());
         		current.erase();
         	}

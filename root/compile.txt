@@ -1,1 +1,3 @@
-javac Atividade06/*.java && java Atividade06/Test ../root/text_input.txt
+javac Atividade06/*.java && java Atividade06/Huffman ../root/text_input.txt
+
+path: Documents/"Boring Stuff"/2020.2/"LP II"/Unidade_03_Parte_02/src
